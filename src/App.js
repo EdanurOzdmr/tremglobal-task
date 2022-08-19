@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Provider } from "./Context";
+import Form from "./components/Form";
+import UserList from "./components/UserList";
+import { Actions } from "./Actions";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const data = Actions();
+    return (
+        <Provider value={data}>
+            <div className="App">
+                <h1>Trem Global Task</h1>
+                <div className="wrapper">
+                    <section className="left-side">
+                        <Form />
+                    </section>
+                    <section className="right-side">
+                        <UserList />
+                    </section>
+                </div>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;
